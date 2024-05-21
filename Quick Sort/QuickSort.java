@@ -27,17 +27,19 @@ public class QuickSort {
     static int partition(int arr[], int low, int high) {
         int i = low;
         int j = high;
-        int pivet = arr[low];
+        int pivot = arr[low];
 
-        while (i <= j) {
-            if (arr[i] > pivet) {
-                if (arr[j] < pivet) {
-                    swap(arr, i, j);
-                } else {
-                    --j;
-                }
-            } else {
+        while (i < j) {
+            while (i <= j && arr[i] <= pivot) {
                 i++;
+            }
+
+            while (i <= j && arr[j] > pivot) {
+                j--;
+            }
+
+            if (i < j) {
+                swap(arr, i, j);
             }
         }
 
