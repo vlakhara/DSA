@@ -1,0 +1,49 @@
+class MergeSort
+{
+    void merge(int arr[], int l, int m, int r)
+    {
+        int[] ans = new int[r - l + 1];
+        int low = l;
+        int right = m + 1;
+        int index = 0;
+        
+        while(low <= m && right <= r) {
+            if(arr[low] <= arr[right]) {
+                ans[index] = arr[low];
+                low++;
+            } else {
+                ans[index] = arr[right];
+                right++;
+            }
+            ++index;
+        }
+        
+        while(low <= m) {
+            ans[index] = arr[low];
+            low++;
+            index++;
+        }
+        
+        while(right <= r) {
+            ans[index] = arr[right];
+            right++;
+            index++;
+        }
+        
+        for(int i = l ; i <= r ; i++) {
+            arr[i] = ans[i - l];
+        }
+        
+    }
+    void mergeSort(int arr[], int l, int r)
+    {
+        
+        if(l == r) {
+            return;
+        }
+        int m = ( l + r) / 2;
+        mergeSort(arr, l, m);
+        mergeSort(arr, m + 1, r);
+        merge(arr, l, m, r);
+    }
+}
