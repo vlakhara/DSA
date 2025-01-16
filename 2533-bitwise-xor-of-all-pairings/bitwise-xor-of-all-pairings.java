@@ -3,21 +3,20 @@ class Solution {
         int m = nums1.length;
         int n = nums2.length;
 
-        int f = 0;
-        int s = 0;
+        int res = 0;
 
         if(n % 2 != 0) {
             for(int i : nums1) {
-                f ^= i;
+                res ^= i;
             }
         }
 
         if(m % 2 != 0) {
             for(int i : nums2) {
-                s ^= i;
+                res ^= i;
             }
         }
 
-        return f ^ s;
+        return res;
     }
 }
