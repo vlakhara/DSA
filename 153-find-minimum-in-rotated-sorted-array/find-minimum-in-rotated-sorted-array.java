@@ -10,6 +10,10 @@ class Solution {
 
             int mid = low + (high - low) / 2;
 
+            if(nums[low] <= nums[high]) {
+                return Math.min(min, nums[low]);
+            }
+
             if(nums[low] <= nums[mid]) {
                 min = Math.min(min, nums[low]);
                 low = mid + 1;
