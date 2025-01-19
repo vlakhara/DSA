@@ -2,13 +2,14 @@ class Solution {
     public int trap(int[] height) {
         int n = height.length;
         int total = 0;
+        int left = Integer.MIN_VALUE;
 
-        int[] prefix = new int[n];
+        // int[] prefix = new int[n];
 
-        prefix[0] = height[0];
-        for (int i = 1; i < n; i++) {
-            prefix[i] = Math.max(prefix[i - 1], height[i]);
-        }
+        // prefix[0] = height[0];
+        // for (int i = 1; i < n; i++) {
+        //     prefix[i] = Math.max(prefix[i - 1], height[i]);
+        // }
 
         int[] postfix = new int[n];
 
@@ -18,8 +19,9 @@ class Solution {
         }
 
         for(int i = 0; i < n; i++) {
-            if(height[i] <= prefix[i] && height[i] <= postfix[i]) {
-                total += Math.min(prefix[i], postfix[i]) - height[i];
+            left = Math.max(height[i], left);
+            if(height[i] <= left && height[i] <= postfix[i]) {
+                total += Math.min(left, postfix[i]) - height[i];
             }
         }
 
