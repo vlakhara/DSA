@@ -33,6 +33,7 @@ class Solution {
                     current = 2;
                 }
             }
+            
             ans = Math.max(current, ans);
         }
 
