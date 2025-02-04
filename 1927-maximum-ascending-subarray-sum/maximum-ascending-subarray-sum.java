@@ -14,11 +14,11 @@ class Solution {
             if(nums[i - 1] < nums[i]) {
                 current += nums[i];
             } else {
-                ans = Math.max(current, ans);
                 current = nums[i];
             }
+            ans = Math.max(current, ans);
         }
 
-        return Math.max(current, ans);
+        return ans;
     }
 }
