@@ -3,10 +3,6 @@ class Solution {
 
         int n = nums.length;
 
-        if(n == 1) {
-            return nums[0];
-        }
-
         int current = nums[0];
         int ans = nums[0];
 
