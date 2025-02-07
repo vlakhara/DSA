@@ -1,8 +1,8 @@
 class Solution {
     public int[] queryResults(int limit, int[][] queries) {
-        int m = queries.length;
+        int n = queries.length;
 
-        int[] ans = new int[m];
+        int[] ans = new int[n];
 
         Map<Integer, Integer> colors = new HashMap<>();
         Map<Integer, Integer> balls = new HashMap<>();
@@ -21,7 +21,7 @@ class Solution {
 
          */
 
-         for(int i = 0; i < m; i++) {
+         for(int i = 0; i < n; i++) {
             int[] query = queries[i];
             int ball = query[0];
             int color = query[1];
