@@ -1,21 +1,19 @@
 class Solution {
     public String clearDigits(String s) {
+        StringBuilder result = new StringBuilder();
         Stack<Integer> closest = new Stack<>();
-        char[] arr = s.toCharArray();
 
-        for(int i = 0; i < arr.length; i++) {
-            int code = (int) arr[i];
-            if(code >= 97 && code <= 122) {
-                closest.push(i);
-            } else {
-                arr[i] = 'A';
-                if(!closest.isEmpty()) {
-                    int peek = closest.pop();
-                    arr[peek] = 'A';
+        for (char c : s.toCharArray()) {
+            if (c >= 'a' && c <= 'z') { 
+                closest.push(result.length()); 
+                result.append(c);
+            } else { 
+                if (!closest.isEmpty()) {
+                    result.setLength(closest.pop()); 
                 }
-
             }
         }
-        return new String(arr).replace("A", "");
+
+        return result.toString();
     }
 }
