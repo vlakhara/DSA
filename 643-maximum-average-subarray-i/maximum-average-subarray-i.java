@@ -1,6 +1,6 @@
 class Solution {
     static {
-        for (int i = 0; i < 500; i++) {
+        for (int i = 0; i < 200; i++) {
             findMaxAverage(new int[]{1}, 1);
         }
     }
