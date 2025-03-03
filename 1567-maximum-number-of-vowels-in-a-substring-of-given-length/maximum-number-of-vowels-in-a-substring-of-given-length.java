@@ -2,7 +2,6 @@ class Solution {
     public int maxVowels(String s, int k) {
         int maxSoFar = Integer.MIN_VALUE;
         int currentMax = 0;
-        int last = 0;
 
         for (int i = 0; i < s.length(); i++) {
             char ch = s.charAt(i);
@@ -11,7 +10,7 @@ class Solution {
                 currentMax++;
             }
 
-            if (i >= k && check(s.charAt(last++))) {
+            if (i >= k && check(s.charAt(i - k))) {
                     currentMax--;
             }
 
