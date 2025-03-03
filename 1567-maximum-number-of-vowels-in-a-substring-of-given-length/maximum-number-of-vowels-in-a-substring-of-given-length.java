@@ -7,19 +7,19 @@ class Solution {
         for (int i = 0; i < s.length(); i++) {
             char ch = s.charAt(i);
 
-            if (i >= k) {
-                maxSoFar = Math.max(maxSoFar, currentMax);
-                if (check(s.charAt(last++))) {
-                    currentMax--;
-                }
-            }
-
             if (check(ch)) {
                 currentMax++;
             }
+
+            if (i >= k && check(s.charAt(last++))) {
+                    currentMax--;
+            }
+
+            maxSoFar = Math.max(maxSoFar, currentMax);
+          
         }
 
-        return Math.max(maxSoFar, currentMax);
+        return maxSoFar;
     }
 
     public static boolean check(char ch) {
