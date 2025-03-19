@@ -19,9 +19,6 @@ class Solution {
             postfix = nums[i] * postfix;
         }
 
-        System.out.println(Arrays.toString(ans));
-
-
         return ans;
 
     }
