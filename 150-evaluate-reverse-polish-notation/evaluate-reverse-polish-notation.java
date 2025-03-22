@@ -5,34 +5,23 @@ class Solution {
         
         for(int i = 0; i < n; i++) {
             String token = tokens[i];
-            if(isOperator(token)) {
+            if(token.equals("+")) {
+                stack.add(stack.pop() + stack.pop());
+            } else if(token.equals("*")) {
+                stack.add(stack.pop() * stack.pop());
+            } else if(token.equals("-")) {
                 int first = stack.pop();
                 int second = stack.pop();
-                int newNum = 0;
-                switch(token) {
-                    case "+":
-                        newNum = first + second;
-                        break;
-                    case "*":
-                        newNum = first * second;
-                        break;
-                    case "-":
-                        newNum = second - first;
-                        break;
-                    case "/":
-                        newNum = second / first;
-                        break;
-                }
-                stack.add(newNum);
+                stack.add(second - first);
+            } else if(token.equals("/")) {
+                int first = stack.pop();
+                int second = stack.pop();
+                stack.add(second / first);
             } else {
                 stack.add(Integer.parseInt(token));
             }
         }
 
         return stack.peek();
-    }
-
-    public static boolean isOperator(String ch) {
-        return ch.equals("-") || ch.equals("+") || ch.equals("*") || ch.equals("/");
     }
 }
