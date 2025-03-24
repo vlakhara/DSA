@@ -1,12 +1,11 @@
 class Solution {
     public boolean checkInclusion(String s1, String s2) {
-        Map<Character, Integer> sMap = new HashMap<>();
+        int[] freq1 = new int[26];
+        int[] freq2 = new int[26];
 
         for(char ch: s1.toCharArray()) {
-            sMap.put(ch, sMap.getOrDefault(ch, 0) + 1);
+            freq1[ch - 'a']++;
         }
-
-        Map<Character, Integer> s2Map = new HashMap<>();
 
         int end = s1.length();
 
@@ -17,17 +16,13 @@ class Solution {
             char first = s2.charAt(index);
 
             if(i >= end) {
-                if(s2Map.get(first) != null && s2Map.get(first) > 1) {
-                    s2Map.put(first, s2Map.get(first) - 1);
-                } else {
-                    s2Map.remove(first);
-                }
+                freq2[first - 'a']--;
                 index++;
             }
 
-            s2Map.put(ch, s2Map.getOrDefault(ch, 0) + 1);
+            freq2[ch - 'a']++;
 
-            if(sMap.equals(s2Map)) {
+            if(Arrays.equals(freq1, freq2)) {
                 return true;
             }
         }
