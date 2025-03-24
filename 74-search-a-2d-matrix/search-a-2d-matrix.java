@@ -1,49 +1,40 @@
 class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
+
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
+            return false;
+        }
         int rowLength = matrix.length;
         int colLength = matrix[0].length;
+        int left = 0;
+        int right = rowLength * colLength - 1;
 
-        int start = 0;
-        int end = colLength - 1;
-        int row = 0;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            int midElement = matrix[mid / colLength][mid % colLength]; 
 
-        while(row < rowLength) {
-
-            if(start > end || end >= colLength) {
-                row++;
-                start = 0;
-                end = colLength - 1;
-            }
-
-            if(row >= rowLength) {
-                return false;
-            } 
-
-            int mid = start + (end - start) / 2;
-
-            if(matrix[row][mid] == target) {
+            if (midElement == target) {
                 return true;
-            } else if(matrix[row][mid] > target) {
-                end = mid - 1;
+            } else if (midElement < target) {
+                left = mid + 1;
             } else {
-                start = mid + 1;
+                right = mid - 1;
             }
         }
 
         return false;
-
     }
 }
 
 /**
-
-     0   1   2   3
-
-0    1   3   5   7
-
-1   10  11  16  20
-
-2   23  30  34  60
-
-
+ * 
+ * 0 1 2 3
+ * 
+ * 0 1 3 5 7
+ * 
+ * 1 10 11 16 20
+ * 
+ * 2 23 30 34 60
+ * 
+ * 
  */
