@@ -1,4 +1,14 @@
 class Solution {
+
+    String str = "abcdefghijklmnopqqrstuvwxyz";
+
+    public void Solution() {
+        for(int i = 0; i < 26; i++) {
+            checkInclusion(str.substring(0, i), str.substring(0, i));
+        }
+    }
+
+
     public boolean checkInclusion(String s1, String s2) {
         int[] freq1 = new int[26];
         int[] freq2 = new int[26];
