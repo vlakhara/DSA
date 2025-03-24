@@ -9,15 +9,11 @@ class Solution {
 
         int end = s1.length();
 
-        int index = 0;
-
         for(int i = 0; i < s2.length(); i++) {
             char ch = s2.charAt(i);
-            char first = s2.charAt(index);
 
             if(i >= end) {
-                freq2[first - 'a']--;
-                index++;
+                freq2[s2.charAt(i - end) - 'a']--;
             }
 
             freq2[ch - 'a']++;
