@@ -3,8 +3,8 @@ class Solution {
         int n = nums.length;
         Set<List<Integer>> ans = new HashSet<>();
 
-        for(int i = 0; i < n; i++) {
-            for(int j = i + 1; j < n; j++) {
+        for(int i = 0; i < n - 2; i++) {
+            for(int j = i + 1; j < n - 1; j++) {
                 Set<Long> set = new HashSet<>();
                 for(int k = j + 1; k < n; k++) {
                     long sum = nums[i] + nums[j];
