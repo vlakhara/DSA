@@ -7,11 +7,9 @@ class Solution {
         }
 
         int[] res = new int[nums1.length];
-        for (int i = 0; i < res.length; i++) {
-            res[i] = -1;
-        }
+        Arrays.fill(res, -1);
 
-        Stack<Integer> stack = new Stack<>();
+        Deque<Integer> stack = new ArrayDeque<>();
         for (int num : nums2) {
             while (!stack.isEmpty() && num > stack.peek()) {
                 int val = stack.pop();
