@@ -7,7 +7,9 @@ class Solution {
         }
 
         int[] res = new int[nums1.length];
-        Arrays.fill(res, -1);
+        for(int i = 0; i < nums1.length; i++) {
+            res[i] = -1;
+        }
 
         Stack<Integer> stack = new Stack<>();
         for (int num : nums2) {
