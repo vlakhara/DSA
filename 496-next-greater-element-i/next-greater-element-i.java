@@ -9,7 +9,7 @@ class Solution {
         int[] res = new int[nums1.length];
         Arrays.fill(res, -1);
 
-        Deque<Integer> stack = new ArrayDeque<>();
+        Stack<Integer> stack = new Stack<>();
         for (int num : nums2) {
             while (!stack.isEmpty() && num > stack.peek()) {
                 int val = stack.pop();
