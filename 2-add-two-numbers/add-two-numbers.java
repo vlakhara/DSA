@@ -10,35 +10,58 @@
  */
 class Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode ans = new ListNode();
-        ListNode temp = ans;
+        return addNumbers(l1, l2, 0);
+        // ListNode ans = new ListNode();
+        // ListNode temp = ans;
 
-        int carry = 0;
-        while(l1 != null || l2 != null || carry > 0) {
+        // int carry = 0;
+        // while(l1 != null || l2 != null || carry > 0) {
 
-            int s1 = 0;
-            int s2 = 0;
+        //     int sum = carry;
+            
+        //     if(l1 != null) {
+        //         sum += l1.val;
+        //         l1 = l1.next;
+        //     }
+
+        //     if(l2 != null) {
+        //         sum += l2.val;
+        //         l2 = l2.next;
+        //     } 
+
+        //     carry = sum / 10;
+        //     sum = sum % 10;
+        //     temp.next = new ListNode(sum);
+
+
+        //     temp = temp.next;
+
+        // }
+
+        // return ans.next;
+    }
+
+    public static ListNode addNumbers(ListNode l1, ListNode l2, int carry) {
+
+            if(l1 == null && l2 == null && carry <= 0) {
+                return null;
+            }
+
+            int sum = carry;
             
             if(l1 != null) {
-                s1 = l1.val;
+                sum += l1.val;
                 l1 = l1.next;
             }
 
             if(l2 != null) {
-                s2 = l2.val;
+                sum += l2.val;
                 l2 = l2.next;
             } 
 
-            int sum = s1 + s2 + carry;
-            carry = sum / 10;
-            sum = sum % 10;
-            temp.next = new ListNode(sum);
+            ListNode temp = new ListNode(sum % 10);
+            temp.next = addNumbers(l1, l2, sum / 10);
 
-
-            temp = temp.next;
-
-        }
-
-        return ans.next;
+            return temp;
     }
 }
