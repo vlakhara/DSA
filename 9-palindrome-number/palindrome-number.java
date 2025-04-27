@@ -4,20 +4,17 @@ class Solution {
             return false;
         }
 
-        String s = Integer.toString(x);
+        int rev = 0;
+        int dummy = x;
 
-        int low = 0;
-        int high = s.length() - 1;
+        while(dummy > 0) {
+            int temp = dummy % 10;
 
-        while(low < high) {
-            if(s.charAt(low) != s.charAt(high)) {
-                return false;
-            }
+            rev = (rev * 10) + temp;
 
-            low++;  
-            high--;
+            dummy /= 10;
         }
 
-        return true;
+        return rev == x;
     }
 }
