@@ -15,9 +15,6 @@ class Solution {
         int left = 0;
         int right = n;
 
-        System.out.println(Arrays.toString(prefix));
-        System.out.println(Arrays.toString(postfix));
-
         for(int i = 0; i < n; i++) {
             if(prefix[i] == postfix[i + 1]) {
                 return i;
