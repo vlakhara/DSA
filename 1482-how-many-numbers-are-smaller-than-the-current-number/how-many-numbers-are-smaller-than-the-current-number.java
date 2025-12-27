@@ -6,6 +6,9 @@ class Solution {
 
         for(int i = 0; i < n; i++) {
             int count = 0;
+            if(nums[i] == 0) {
+                continue;
+            }
             for(int j = 0; j < n; j++) {
                 if(i != j && nums[j] < nums[i]) {
                     count++;
