@@ -5,7 +5,6 @@ class Solution {
         for(int num: nums) {
             total -= num;
         }
-        System.gc();
         return total;
 
         // int xor1 = 0;
