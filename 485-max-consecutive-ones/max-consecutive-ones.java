@@ -1,6 +1,5 @@
 class Solution {
     public int findMaxConsecutiveOnes(int[] nums) {
-        int len = nums.length;
         int max = 0;
         int current = 0;
 
