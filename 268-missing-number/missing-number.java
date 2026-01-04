@@ -15,7 +15,7 @@ class Solution {
             xor2 ^= nums[i];
             xor1 ^= (i + 1);
         }
-
+        System.gc();
         return xor1 ^ xor2;
     }
 }
