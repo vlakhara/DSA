@@ -4,9 +4,7 @@ class Solution {
         int min = arr[1] - arr[0];
 
         for(int i = 0; i < arr.length - 1; i++) {
-            if(Math.abs(arr[i] - arr[i + 1]) < min) {
-                min = Math.abs(arr[i] - arr[i + 1]);
-            }
+            min = Math.min(min, Math.abs(arr[i] - arr[i + 1]));
         }
 
         List<List<Integer>> answers = new ArrayList<>();
@@ -14,10 +12,7 @@ class Solution {
         for (int i = 1; i < arr.length; i++) {
             
             if (Math.abs(arr[i] - arr[i - 1]) == min) {
-                List<Integer> ans = new ArrayList<>();
-                ans.add(arr[i - 1]);
-                ans.add(arr[i]);
-                answers.add(ans);
+                answers.add(Arrays.asList(arr[i-1],arr[i]));
             }
         }
 
@@ -37,7 +32,7 @@ class Solution {
     }
 
     private static void merge(int[] arr, int start, int mid, int end) {
-        int[] temp = new int[end - start + 1]; // 0, 0, 1
+        int[] temp = new int[end - start + 1];
         int left = start;
         int right = mid + 1;
         int index = 0;
@@ -65,8 +60,8 @@ class Solution {
             index++;
         }
 
-        for(int i = start; i <= end ; i++) { // 0 -> 1
-            arr[i] = temp[i - start]; // 0
+        for(int i = start; i <= end ; i++) {
+            arr[i] = temp[i - start];
         }
     }
 }
