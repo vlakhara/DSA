@@ -1,6 +1,6 @@
 class Solution {
     public List<List<Integer>> minimumAbsDifference(int[] arr) {
-        sort(arr, 0, arr.length - 1);
+        Arrays.sort(arr);
         int min = arr[1] - arr[0];
 
         for(int i = 0; i < arr.length - 1; i++) {
@@ -10,7 +10,6 @@ class Solution {
         List<List<Integer>> answers = new ArrayList<>();
 
         for (int i = 1; i < arr.length; i++) {
-            
             if (Math.abs(arr[i] - arr[i - 1]) == min) {
                 answers.add(Arrays.asList(arr[i-1],arr[i]));
             }
