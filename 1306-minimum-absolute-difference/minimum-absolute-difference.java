@@ -1,66 +1,48 @@
 class Solution {
     public List<List<Integer>> minimumAbsDifference(int[] arr) {
-        Arrays.sort(arr);
-        int min = Integer.MAX_VALUE;
+        int n = arr.length;
 
-        for(int i = 0; i < arr.length - 1; i++) {
-            min = Math.min(min, Math.abs(arr[i] - arr[i + 1]));
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
+
+        for(int num: arr) {
+            min = Math.min(min, num);
+            max = Math.max(max, num);
         }
 
-        List<List<Integer>> answers = new ArrayList<>();
+        boolean[] present = new boolean[max - min + 1];
 
-        for (int i = 1; i < arr.length; i++) {
-            if (Math.abs(arr[i] - arr[i - 1]) == min) {
-                answers.add(Arrays.asList(arr[i-1],arr[i]));
+        for(int num : arr) {
+            present[num - min] = true;
+        }
+
+        int minDiff = Integer.MAX_VALUE;
+        int prev = -1;
+
+        for(int i = 0; i < present.length; i++) {
+            if(present[i]) {
+                if(prev != -1) {
+                    minDiff = Math.min(minDiff, i - prev);
+                }
+                prev = i;
             }
         }
 
-        return answers;
+        List<List<Integer>> ans = new ArrayList<>();
+        prev = -1;
+
+        for(int i = 0; i < present.length; i++) {
+            if(present[i]) {
+                if(prev != -1 && i - prev == minDiff) {
+                    ans.add(Arrays.asList(
+                        prev + min,
+                        i + min
+                    ));
+                }
+                prev = i;
+            }
+        }
+
+        return ans;
     }
-
-    // private static void sort(int[] arr, int start, int end) {
-    //     if(start == end) {
-    //         return;
-    //     }
-
-    //     int mid = start + ((end - start) / 2);
-
-    //     sort(arr, start, mid);
-    //     sort(arr, mid + 1, end);
-    //     merge(arr, start, mid, end);
-    // }
-
-    // private static void merge(int[] arr, int start, int mid, int end) {
-    //     int[] temp = new int[end - start + 1];
-    //     int left = start;
-    //     int right = mid + 1;
-    //     int index = 0;
-
-    //     while(left <= mid && right <= end) {
-    //         if(arr[left] < arr[right]) {
-    //             temp[index] = arr[left];
-    //             left++;
-    //         } else {
-    //             temp[index] = arr[right];
-    //             right++;
-    //         }
-    //         index++;
-    //     }
-
-    //     while(left <= mid) {
-    //         temp[index] = arr[left];
-    //         left++;
-    //         index++;
-    //     }
-
-    //     while(right <= end) {
-    //         temp[index] = arr[right];
-    //         right++;
-    //         index++;
-    //     }
-
-    //     for(int i = start; i <= end ; i++) {
-    //         arr[i] = temp[i - start];
-    //     }
-    // }
 }
