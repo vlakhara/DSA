@@ -5,10 +5,7 @@ class Solution {
 
         for(int i = 0; i < n; i++) {
             if(nums[i] != val) {
-                int temp = nums[i];
-                nums[i] = nums[index];
-                nums[index] = temp;
-                index++;
+                nums[index++] = nums[i];
             }
         }
 
